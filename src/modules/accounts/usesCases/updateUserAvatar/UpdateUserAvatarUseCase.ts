@@ -1,5 +1,6 @@
-import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 import { inject, injectable } from 'tsyringe';
+import { deleteFile } from '../../../../utils/file';
+import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
   user_id: string;
@@ -9,18 +10,23 @@ interface IRequest {
 @injectable()
 class UpdateUserAvatarUseCase {
   constructor(
-    @inject('UserRepository')
+    @inject('UsersRepository')
     private usersRepository: IUsersRepository,
   ) {}
 
   async execute({ user_id, avatar_file }: IRequest): Promise<void> {
     //const usersRepository = getRepository(User);
     const user = await this.usersRepository.findById(user_id);
-    user?.avatar = avatar_file;
+
+    await deleteFile(`./tmp/avatar/${user.avatar}`);
+    user.avatar = avatar_file;
 
     await this.usersRepository.create(user);
+  }
+}
+export { UpdateUserAvatarUseCase };
 
-    /*
+/*
       const userAvatarFilePath = path.join(uploadConfig.directory, user.avatar);
 
       const userAvatarFileExists = await fs.promises.stat(userAvatarFilePath);
@@ -43,6 +49,3 @@ class UpdateUserAvatarUseCase {
   }
 }
 */
-  }
-}
-export { UpdateUserAvatarUseCase };
