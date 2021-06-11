@@ -1,10 +1,10 @@
 {
   "type": "postgres",
-  "host": "192.168.99.100",
-  "port": "5432",
+  "host": "localhost",
+  "port": 5432,
   "username": "postgres",
   "password": "j2240",
-  "database": "rentx",
+  "database": "rentlx",
 
   "migrations": ["./src/database/migrations/**.ts"],
 

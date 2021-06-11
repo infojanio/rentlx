@@ -1,6 +1,6 @@
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
+import { deleteFile } from '@utils/file';
 import { inject, injectable } from 'tsyringe';
-import { deleteFile } from '../../../../utils/file';
-import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
   user_id: string;
@@ -34,12 +34,12 @@ export { UpdateUserAvatarUseCase };
       if (userAvatarFileExists) {
         await fs.promises.unlink(userAvatarFilePath);
       }
-    
 
 
 
 
-    
+
+
     user.avatar = avatar_file;
 
     //se já existir avatar de usuário irá atualizar, se não irá incluir
