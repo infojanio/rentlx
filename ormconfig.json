@@ -6,7 +6,7 @@
   "password": "j2240",
   "database": "rentlx",
 
-  "migrations": ["./src/database/migrations/**.ts"],
+  "migrations": ["./src/shared/infra/typeorm/migrations/**.ts"],
 
   "entities": [
     "./src/modules/cars/entities/**.ts",
@@ -14,6 +14,6 @@
   ],
 
   "cli": {
-    "migrationsDir": "./src/database/migrations"
+    "migrationsDir": "./src/shared/infra/typeorm/migrations"
   }
 }
