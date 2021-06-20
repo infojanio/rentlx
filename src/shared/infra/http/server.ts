@@ -6,6 +6,9 @@ import { AppError } from '@shared/errors/AppError';
 import { router } from './routes';
 import '@shared/container';
 import swaggerFile from '../../../swagger.json';
+import createConnection from '@shared/infra/typeorm';
+
+createConnection(); //chama a conexão do typeorm/index.ts
 
 const app = express();
 app.use(express.json());

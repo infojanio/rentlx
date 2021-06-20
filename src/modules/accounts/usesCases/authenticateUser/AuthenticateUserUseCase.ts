@@ -1,7 +1,7 @@
 import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
-import authConfig from '../../../../config/auth';
+import authConfig from '@config/auth';
 import { AppError } from '@shared/errors/AppError';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
 
@@ -25,7 +25,7 @@ class AuthenticateUserUseCase {
     private usersRepository: IUsersRepository,
   ) {}
 
-  async execute({ password, email }: IRequest): Promise<IResponse> {
+  async execute({ email, password }: IRequest): Promise<IResponse> {
     //usuário existe?
     const user = await this.usersRepository.findByEmail(email);
     if (!user) {
