@@ -51,7 +51,7 @@ describe('Create Car', () => {
     }).rejects.toBeInstanceOf(AppError);
   });
 
-  //teste de verificação de cadastro de mesmo n. placa
+  //teste de verificação de cadastro de carro já disponivel como default
   it('should not be able to create a car with available true by default', async () => {
     const car = await createCarUseCase.execute({
       name: 'Car Available',
