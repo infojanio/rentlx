@@ -12,8 +12,8 @@ class ListAvailableController {
       name: name as string,
       category_id: category_id as string,
     });
-
-    return response.status(201).json(cars);
+    console.log('controller=', cars);
+    return response.json(cars);
   }
 }
 export { ListAvailableController };

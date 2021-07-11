@@ -19,6 +19,8 @@ class CarsRepository implements ICarsRepository {
     daily_rate,
     fine_amount,
     license_plate,
+    specifications,
+    id,
   }: ICreateCarDTO): Promise<Car> {
     const car = this.repository.create({
       name,
@@ -28,6 +30,8 @@ class CarsRepository implements ICarsRepository {
       daily_rate,
       fine_amount,
       license_plate,
+      specifications,
+      id,
     });
     await this.repository.save(car);
     return car;
@@ -48,7 +52,7 @@ class CarsRepository implements ICarsRepository {
     brand?: string,
     name?: string,
     category_id?: string,
-  ): Promise<Car[] | undefined> {
+  ): Promise<Car[]> {
     const carsQuery = await this.repository
       .createQueryBuilder('c')
       .where('available = :available', { available: true });
@@ -71,6 +75,11 @@ class CarsRepository implements ICarsRepository {
     const cars = await carsQuery.getMany();
     return cars;
     //console.log(cars); No insominia não retorna os dados filtrados
+  }
+
+  async findById(id: string): Promise<Car | undefined> {
+    const car = await this.repository.findOne(id);
+    return car;
   }
 }
 export { CarsRepository };

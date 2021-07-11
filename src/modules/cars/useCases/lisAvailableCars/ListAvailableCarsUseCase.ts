@@ -14,16 +14,14 @@ class ListAvailableCarsUseCase {
     private carsRepository: ICarsRepository,
   ) {}
 
-  async execute({
-    brand,
-    name,
-    category_id,
-  }: IRequest): Promise<Car[] | undefined> {
+  async execute({ brand, name, category_id }: IRequest): Promise<Car[]> {
     const cars = await this.carsRepository.findAvailable(
       brand,
       name,
       category_id,
     );
+    //estou usando o console.log pq não consegui fazer retornar no Insomnia
+    console.log('UseCase=', cars); //lista carros disponíveis
     return cars;
   }
 }

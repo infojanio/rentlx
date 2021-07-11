@@ -13,6 +13,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
     daily_rate,
     fine_amount,
     license_plate,
+    id,
   }: ICreateCarDTO): Promise<Car> {
     const car = new Car();
 
@@ -24,6 +25,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
       daily_rate,
       fine_amount,
       license_plate,
+      id,
     });
     this.cars.push(car);
     return car;
@@ -37,7 +39,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
     category_id?: string,
     brand?: string,
     name?: string,
-  ): Promise<Car[] | undefined> {
+  ): Promise<Car[]> {
     //o uso do filter retorna uma lista de objetos, o find retorna apenas 1 objeto
     const Allcars = this.cars.filter((car) => {
       if (
@@ -52,6 +54,10 @@ class CarsRepositoryInMemory implements ICarsRepository {
     });
 
     return Allcars;
+  }
+
+  async findById(id: string): Promise<Car | undefined> {
+    return this.cars.find((car) => car.id === id);
   }
 }
 

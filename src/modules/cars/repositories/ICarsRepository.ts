@@ -3,11 +3,15 @@ import { Car } from '@modules/cars/infra/typeorm/entities/Car';
 
 interface ICarsRepository {
   create(data: ICreateCarDTO): Promise<Car>;
+
   findByLicensePlate(license_plate: string): Promise<Car | undefined>;
+
   findAvailable(
     brand?: string,
     name?: string,
     category_id?: string,
-  ): Promise<Car[] | undefined>; //encontrar carros disponíveis
+  ): Promise<Car[]>; //encontrar carros disponíveis
+
+  findById(id: string): Promise<Car | undefined>;
 }
 export { ICarsRepository };
