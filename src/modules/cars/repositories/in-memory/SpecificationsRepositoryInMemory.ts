@@ -29,7 +29,7 @@ class SpecificationsRepositoryInMemory implements ISpecificationsRepository {
 
   async findByIds(ids: string[]): Promise<Specification[]> {
     const AllSpecifications = this.specifications.filter((specification) =>
-      //tive que alterar a entity: Specification.ts ->   id?: string;  para: id: string
+      //configure o tsconfig.json, coloca o "strict" como false, para que algumas validações do TypeScript não sejam feitas.
       ids.includes(specification.id),
     );
     console.log(AllSpecifications);

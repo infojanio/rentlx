@@ -19,7 +19,7 @@ class UpdateUserAvatarUseCase {
     const user = await this.usersRepository.findById(user_id);
 
     await deleteFile(`./tmp/avatar/${user.avatar}`);
-    user.avatar = avatar_file;
+    user.avatar = avatar_file; //não pode ser acesso
 
     await this.usersRepository.create(user);
   }

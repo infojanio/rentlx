@@ -4,8 +4,8 @@ import { v4 as uuidV4 } from 'uuid';
 @Entity('specifications')
 class Specification {
   @PrimaryColumn()
-  id: string;
-  //tive que alterar id?: string;  assim resolvi o teste findByIds no SpecificationsRepositoryInMemory
+  id?: string;
+  //configure o tsconfig.json, coloca o "strict" como false, para que algumas validações do TypeScript não sejam feitas.
 
   @Column()
   name: string;
