@@ -5,6 +5,8 @@ import { IRentalsRepository } from '@modules/rentals/repositories/IRentalsReposi
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';
 import { AppError } from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
+import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository';
+import { CarsRepository } from '@modules/cars/infra/typeorm/repositories/CarsRepository';
 
 interface IRequest {
   user_id: string;
@@ -19,6 +21,8 @@ class CreateRentalUseCase {
     private rentalsRepository: IRentalsRepository,
     @inject('DayjsDateProvider')
     private dateProvider: IDateProvider,
+    @inject('CarsRepository')
+    private carsRepository: ICarsRepository,
   ) {}
 
   async execute({
@@ -64,6 +68,9 @@ class CreateRentalUseCase {
       car_id,
       expected_return_date,
     });
+
+    //altera o status do aluguel do carro p/ indisponível
+    await this.carsRepository.updateAvailable(car_id, false);
 
     return rental;
   }
