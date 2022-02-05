@@ -29,7 +29,7 @@ class CreateRentalUseCase {
     user_id,
     car_id,
     expected_return_date,
-  }: IRequest): Promise<Rental | undefined> {
+  }: IRequest): Promise<Rental> {
     const minimumHour = 24; //qtd mínima hs de locação
 
     //Não deve ser possível cadastrar um novo aluguel caso já exista um aberto para o mesmo usuario

@@ -28,6 +28,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
       id,
     });
     this.cars.push(car);
+    console.log(car);
     return car;
   }
 
@@ -61,7 +62,7 @@ class CarsRepositoryInMemory implements ICarsRepository {
   }
 
   //atualizar status do carro após ser reservado ou devolvido
-  updateAvailable(id: string, available: boolean): Promise<void> {
+  async updateAvailable(id: string, available: boolean): Promise<void> {
     const findIndex = this.cars.findIndex((car) => car.id === id);
     this.cars[findIndex].available = available;
   }

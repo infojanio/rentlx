@@ -12,6 +12,8 @@ interface IRentalsRepository {
   }: ICreateRentalDTO): Promise<Rental | undefined>;
 
   findById(id: string): Promise<Rental | undefined>;
+
+  findByUser(user_id: string): Promise<Rental[] | undefined>; //retorna array de alugueis
 }
 
 export { IRentalsRepository };

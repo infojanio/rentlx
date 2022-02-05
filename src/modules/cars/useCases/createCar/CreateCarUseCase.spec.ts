@@ -27,19 +27,19 @@ describe('Create Car', () => {
   });
 
   //teste de verificação de cadastro de mesmo n. placa
-  it('should not be able to create a car with exists license plate', () => {
-    expect(async () => {
-      await createCarUseCase.execute({
-        name: 'Car 1',
-        description: 'Name Car',
-        daily_rate: 100, //valor da diária
-        license_plate: 'ABC-1234',
-        fine_amount: 60, //multa de atraso
-        brand: 'Marca', //Marca
-        category_id: 'Category',
-      });
+  it('should not be able to create a car with exists license plate', async () => {
+    await createCarUseCase.execute({
+      name: 'Car 1',
+      description: 'Name Car',
+      daily_rate: 100, //valor da diária
+      license_plate: 'ABC-1234',
+      fine_amount: 60, //multa de atraso
+      brand: 'Marca', //Marca
+      category_id: 'Category',
+    });
 
-      await createCarUseCase.execute({
+    await expect(
+      createCarUseCase.execute({
         name: 'Car 2',
         description: 'Name Car',
         daily_rate: 100, //valor da diária
@@ -47,8 +47,8 @@ describe('Create Car', () => {
         fine_amount: 60, //multa de atraso
         brand: 'Marca', //Marca
         category_id: 'Category',
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      }),
+    ).rejects.toEqual(new AppError('Car already exists!'));
   });
 
   //teste de verificação de cadastro de carro já disponivel como default

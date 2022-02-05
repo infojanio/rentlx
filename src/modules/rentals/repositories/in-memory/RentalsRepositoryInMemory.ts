@@ -8,7 +8,7 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
   //encontra o veículo que ainda não foi devolvido
   async findOpenRentalByCar(car_id: string): Promise<Rental | undefined> {
     return this.rentals.find(
-      (rental) => rental.car_id === car_id && !rental.expected_return_date,
+      (rental) => rental.car_id === car_id && !rental.end_date,
     );
   }
 
@@ -22,7 +22,7 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
     car_id,
     expected_return_date,
     user_id,
-  }: ICreateRentalDTO): Promise<Rental | undefined> {
+  }: ICreateRentalDTO): Promise<Rental> {
     const rental = new Rental();
 
     Object.assign(rental, {
@@ -37,6 +37,10 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
 
   async findById(id: string): Promise<Rental | undefined> {
     return this.rentals.find((rental) => rental.id === id);
+  }
+
+  async findByUser(user_id: string): Promise<Rental[]> {
+    return this.rentals.filter((rental) => rental.user_id === user_id);
   }
 }
 export { RentalsRepositoryInMemory };
