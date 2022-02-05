@@ -46,7 +46,7 @@
 # Aluguel de carro
 
 **RF**
-[]Deve ser possível cadastrar um aluguel
+[ok]Deve ser possível cadastrar um aluguel
 
 **RN**
 []O aluguel deve ter duração mínima de 24h.
@@ -58,7 +58,7 @@
 # Aluguel de carro
 
 **RF**
-[]Deve ser possível realizar a devolução de um carro
+[ok]Deve ser possível realizar a devolução de um carro
 
 **RN**
 [ok] Se o carro for devolvido com menos de 24h, deverá ser cobrado diária completa.
@@ -71,7 +71,7 @@
 # Listagem de alugueis para usuário
 
 **RF**
-[]Deve ser possível realizar a busca de todos os alugueis para o usuário.
+[ok]Deve ser possível realizar a busca de todos os alugueis para o usuário.
 
 **RN**
-[] O usuário deve estar logado na aplicação.
+[ok] O usuário deve estar logado na aplicação.
