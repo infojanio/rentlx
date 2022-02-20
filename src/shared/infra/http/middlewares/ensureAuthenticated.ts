@@ -3,6 +3,8 @@ import { UsersRepository } from '@modules/accounts/infra/typeorm/repositories/Us
 import { NextFunction, Request, Response } from 'express';
 import { verify } from 'jsonwebtoken';
 import authConfig from '../../../../config/auth';
+import { UsersTokensRepository } from '@modules/accounts/infra/typeorm/repositories/UsersTokensRepository';
+import auth from '../../../../config/auth';
 
 interface ITokenPayLoad {
   iat: number;
@@ -17,6 +19,7 @@ export async function ensureAuthenticated(
   next: NextFunction,
 ) {
   const authHeader = request.headers.authorization;
+  const userTokensRepository = new UsersTokensRepository();
 
   //dispara o erro caso o token não seja válido
   if (!authHeader) {
@@ -27,12 +30,14 @@ export async function ensureAuthenticated(
   const [, token] = authHeader.split(' ');
 
   try {
-    const decoded = verify(token, authConfig.jwt.secret);
+    const decoded = verify(token, auth.secret_refresh_token); //esperamos receber o refresh
 
     const { sub: user_id } = decoded as ITokenPayLoad;
 
-    const usersRepository = new UsersRepository();
-    const user = await usersRepository.findById(user_id);
+    const user = await userTokensRepository.findUserByIdAndRefreshToken(
+      user_id,
+      token,
+    );
 
     if (!user) {
       //throw new Error('User does not exist!');

@@ -1,4 +1,30 @@
 {
-"editor.codeActionsOnSave": {
+  "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
-}}
+  },
+  "cSpell.words": [
+    "alteração",
+    "basta",
+    "Caso",
+    "coloca",
+    "compila",
+    "construtor",
+    "dentro",
+    "Equipe",
+    "ignorar",
+    "Obrigado",
+    "pega",
+    "realizar",
+    "Recuperação",
+    "Rentx",
+    "senha",
+    "sido",
+    "solicitou",
+    "tenha",
+    "troca",
+    "tsyringe",
+    "variável",
+    "você",
+    "Você"
+  ]
+}

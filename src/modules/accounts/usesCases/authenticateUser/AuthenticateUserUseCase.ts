@@ -4,7 +4,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '@shared/errors/AppError';
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository';
-import { IUsersTokensRepository } from '@modules/accounts/repositories/in-memory/IUsersTokensRepository';
+import { IUsersTokensRepository } from '@modules/accounts/repositories/IUsersTokensRepository';
 import auth from '@config/auth';
 import { idText } from 'typescript';
 import { IDateProvider } from '@shared/container/providers/DateProvider/IDateProvider';

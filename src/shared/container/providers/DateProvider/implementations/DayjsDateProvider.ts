@@ -32,5 +32,15 @@ class DayjsDateProvider implements IDateProvider {
   addDays(days: number): Date {
     return dayjs().add(days, 'days').toDate();
   }
+
+  //quantidade de horas a adicionar validade do token
+  addHours(hours: number): Date {
+    return dayjs().add(hours, 'hour').toDate();
+  }
+
+  //verifica se a data expirou
+  compareIfBefore(start_date: Date, end_date: Date): boolean {
+    return dayjs(start_date).isBefore(end_date);
+  }
 }
 export { DayjsDateProvider };
