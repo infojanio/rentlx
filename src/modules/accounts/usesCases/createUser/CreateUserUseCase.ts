@@ -15,7 +15,7 @@ class CreateUserUseCase {
     name,
     email,
     password,
-    driver_license,
+    phone,
   }: ICreateUserDTO): Promise<void> {
     //Não permitir cadastrar usuário com mesmo email
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
@@ -31,7 +31,7 @@ class CreateUserUseCase {
       name,
       email,
       password: passwordHash,
-      driver_license,
+      phone,
     });
   }
 }

@@ -4,7 +4,7 @@
   "port": "5432",
   "username": "postgres",
   "password": "j2240",
-  "database": "rentlx",
+  "database": "icompras",
 
   "migrations": ["./src/shared/infra/typeorm/migrations/**.ts"],
 

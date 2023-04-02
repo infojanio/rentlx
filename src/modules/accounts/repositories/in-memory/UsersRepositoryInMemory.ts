@@ -7,7 +7,7 @@ class UsersRepositoryInMemory implements IUsersRepository {
 
   //1. teste de criação do usuário
   async create({
-    driver_license,
+    phone,
     email,
     name,
     password,
@@ -15,7 +15,7 @@ class UsersRepositoryInMemory implements IUsersRepository {
     const user = new User();
 
     Object.assign(user, {
-      driver_license,
+      phone,
       email,
       name,
       password,

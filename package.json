@@ -1,8 +1,8 @@
 {
-  "name": "rentalx-template",
+  "name": "icompras_backend",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/infojanio/rentalx-template.git",
+  "repository": "https://github.com/infojanio/icompras_backend.git",
   "author": "infojanio <you@example.com>",
   "license": "MIT",
   "scripts": {
